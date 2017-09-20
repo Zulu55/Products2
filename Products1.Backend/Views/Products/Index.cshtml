@@ -32,9 +32,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Stock)
         </th>
-        <th width="50px">
-            @Html.DisplayNameFor(model => model.Remarks)
-        </th>
         <th></th>
     </tr>
 
@@ -63,9 +60,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Stock)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Remarks)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }, new { @class = "btn btn-warning" })

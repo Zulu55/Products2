@@ -46,7 +46,7 @@
             return View();
         }
 
-        // POST: Praoducts/Create
+        // POST: Products/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(ProductView view)

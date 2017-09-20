@@ -17,6 +17,8 @@
         [Index("Product_Description_Index", IsUnique = true)]
         public string Description  { get; set; }
 
+        public string Image { get; set; }
+
         [Required(ErrorMessage = "The field {0} is required.")]
         [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)]
         public decimal Price { get; set; }
@@ -27,8 +29,6 @@
         [Display(Name = "Last Purchase")]
         [DataType(DataType.Date)]
         public DateTime LastPurchase { get; set; }
-
-        public string Image { get; set; }
 
         public double Stock { get; set; }
 

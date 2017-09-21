@@ -24,7 +24,7 @@
             foreach (var category in categories)
             {
                 var products = new List<ProductResponse>();
-                foreach (var product in category.Products.ToList())
+                foreach (var product in category.Products)
                 {
                     products.Add(new ProductResponse
                     {

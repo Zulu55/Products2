@@ -20,13 +20,14 @@
         public async Task<IHttpActionResult> GetCategories()
         {
             var categories = await db.Categories.ToListAsync();
-            var response = new List<CategoryResponse>();
+            var categoriesResponse = new List<CategoryResponse>();
+
             foreach (var category in categories)
             {
-                var products = new List<ProductResponse>();
+                var productsResponse = new List<ProductResponse>();
                 foreach (var product in category.Products)
                 {
-                    products.Add(new ProductResponse
+                    productsResponse.Add(new ProductResponse
                     {
                         Description = product.Description,
                         Image = product.Image,
@@ -39,15 +40,15 @@
                     });
                 }
 
-                response.Add(new CategoryResponse
+                categoriesResponse.Add(new CategoryResponse
                 {
                     CategoryId = category.CategoryId,
                     Description = category.Description,
-                    Products = products,
+                    Products = productsResponse,
                 });
             }
 
-            return Ok(response);
+            return Ok(categoriesResponse);
         }
 
         // GET: api/Categories/5

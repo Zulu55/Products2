@@ -17,7 +17,14 @@
             set;
         }
 
-        public TokenResponse Token
+        public  TokenResponse Token
+        {
+            get;
+            set;
+   
+        }
+
+        public ProductsViewModel Products
         {
             get;
             set;
@@ -33,14 +40,14 @@
         }
         #endregion
 
-        #region Singleton
+        #region Sigleton
         static MainViewModel instance;
 
         public static MainViewModel GetInstance()
         {
             if (instance == null)
             {
-                instance = new MainViewModel();
+                return new MainViewModel();
             }
 
             return instance;

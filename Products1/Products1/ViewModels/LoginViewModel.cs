@@ -3,8 +3,8 @@
     using System.ComponentModel;
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
-    using Services;
     using Views;
+    using Services;
     using Xamarin.Forms;
 
     public class LoginViewModel : INotifyPropertyChanged 
@@ -124,6 +124,9 @@
             apiService = new ApiService();
             dialogService = new DialogService();
 
+            Email = "jzuluaga55@gmail.com";
+            Password = "123456";
+
             IsEnabled = true;
             IsToggled = true;
         }
@@ -168,35 +171,35 @@
                 return;
             }
 
-            var token = await apiService.GetToken(
+            var response = await apiService.GetToken(
                 "http://productszuluapi.azurewebsites.net", 
                 Email, 
                 Password);
 
-            if (token == null)
+            if (response == null)
             {
                 IsRunning = false;
                 IsEnabled = true;
                 await dialogService.ShowMessage(
                     "Error", 
-                    "The service is not available, pleaase try latter.");
+                    "The service is not available, please try latter.");
                 Password = null;
                 return;
             }
 
-            if (string.IsNullOrEmpty(token.AccessToken))
+            if (string.IsNullOrEmpty(response.AccessToken))
             {
                 IsRunning = false;
                 IsEnabled = true;
                 await dialogService.ShowMessage(
                     "Error", 
-                    token.ErrorDescription);
+                    response.ErrorDescription);
                 Password = null;
                 return;
             }
 
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.Token = token;
+            mainViewModel.Token = response;
             mainViewModel.Categories = new CategoriesViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(
                 new CategoriesView());

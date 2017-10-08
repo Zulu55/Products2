@@ -30,6 +30,7 @@
                 {
                     productsResponse.Add(new ProductResponse
                     {
+                        CategoryId = product.CategoryId,
                         Description = product.Description,
                         Image = product.Image,
                         IsActive = product.IsActive,

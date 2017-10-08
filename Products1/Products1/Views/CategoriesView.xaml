@@ -18,10 +18,10 @@
             Padding="5">
             <ListView 
                 HasUnevenRows="true" 
-                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
                 IsPullToRefreshEnabled="true"
-                RefreshCommand="{Binding RefreshCommand}"
-                ItemsSource="{Binding CategoriesList}">
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                ItemsSource="{Binding Categories}"
+                RefreshCommand="{Binding RefreshCommand}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

@@ -118,6 +118,8 @@
     <BundleResource Include="Resources\ic_chevron_right.png" />
     <BundleResource Include="Resources\ic_add_circle.png" />
     <BundleResource Include="Resources\ic_action_add_circle.png" />
+    <BundleResource Include="Resources\ic_action_image.png" />
+    <BundleResource Include="Resources\noimage.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

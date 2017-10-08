@@ -28,7 +28,7 @@
         #endregion
 
         #region Properties
-        public ObservableCollection<Category> CategoriesList
+        public ObservableCollection<Category> Categories
         {
             get
             {
@@ -41,7 +41,7 @@
                     _categories = value;
                     PropertyChanged?.Invoke(
                         this,
-                        new PropertyChangedEventArgs(nameof(CategoriesList)));
+                        new PropertyChangedEventArgs(nameof(Categories)));
                 }
             }
         }
@@ -92,28 +92,28 @@
 		#endregion
 
 		#region Methods
-		public void AddCategory(Category category)
+		public void Add(Category category)
 		{
 			IsRefreshing = true;
 			categories.Add(category);
-			CategoriesList = new ObservableCollection<Category>(
+			Categories = new ObservableCollection<Category>(
 				categories.OrderBy(c => c.Description));
             IsRefreshing = false;
 		}
 
-		public void UpdateCategory(Category category)
+		public void Update(Category category)
 		{
 			IsRefreshing = true;
 			var oldCategory = categories
                 .Where(c => c.CategoryId == category.CategoryId)
                 .FirstOrDefault();
             oldCategory = category;
-			CategoriesList = new ObservableCollection<Category>(
+			Categories = new ObservableCollection<Category>(
 				categories.OrderBy(c => c.Description));
 			IsRefreshing = false;
 		}
 
-		public async Task DeleteCategory(Category category)
+		public async Task Delete(Category category)
 		{
 			IsRefreshing = true;
 
@@ -145,7 +145,7 @@
 			}
 
             categories.Remove(category);
-			CategoriesList = new ObservableCollection<Category>(
+			Categories = new ObservableCollection<Category>(
 				categories.OrderBy(c => c.Description));
 
             IsRefreshing = false;
@@ -181,7 +181,7 @@
             }
 
             categories = (List<Category>)response.Result;
-            CategoriesList = new ObservableCollection<Category>(
+            Categories = new ObservableCollection<Category>(
                 categories.OrderBy(c => c.Description));
             IsRefreshing = false;
         }

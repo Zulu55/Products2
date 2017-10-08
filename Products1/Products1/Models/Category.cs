@@ -1,6 +1,5 @@
 ﻿namespace Products1.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
@@ -56,7 +55,7 @@
                 return;
             }
 
-            CategoriesViewModel.GetInstance().DeleteCategory(this);
+            await CategoriesViewModel.GetInstance().Delete(this);
         }
 
         public ICommand EditCommand
@@ -86,6 +85,7 @@
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Products = new ProductsViewModel(Products);
+            mainViewModel.Category = this;
             await navigationService.Navigate("ProductsView");
         }
         #endregion
